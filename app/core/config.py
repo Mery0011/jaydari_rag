@@ -12,17 +12,18 @@ class Settings(BaseSettings):
     app_name: str = 'jaydari-rag'
     log_level: str = 'INFO'
 
-    qdrant_url: str | None = None
-    qdrant_api_key: str | None = None
-    qdrant_collection: str = 'documents'
+    qdrant_url: str
+    qdrant_api_key: str
+    qdrant_collection: str
+    qdrant_timeout: float = 10.0
 
-    embedding_model: str = 'sentence-transformers/all-MiniLM-L6-v2'
-
-    llm_model: str = 'TinyLlama/TinyLlama-1.1B-Chat-v1.0'
+    embedding_model: str
+    llm_model: str
     llm_adapter_path: str | None = None
     llm_device: str = 'cpu'
-    llm_max_new_tokens: int = 256
+    llm_max_new_tokens: int
     llm_temperature: float = 0.2
+    llm_adapter_path: str | None = None
 
     rag_enabled: bool = True
     rag_mode: str = 'auto'
@@ -33,7 +34,3 @@ class Settings(BaseSettings):
     max_sources: int = 2
     chunk_size_chars: int = 1200
     chunk_overlap_chars: int = 200
-    qdrant_timeout: float = 10.0
-
-
-settings = Settings()
